@@ -49,7 +49,7 @@ public class ArticleController {
         List<CommentDto> commentDtos = commentService.comments(id);
         // 2. 모델에 데이터 등록하기
         model.addAttribute("article" , articleEntity);
-        model.addAttribute("commentsDtos"); //댓글 목록 모델에 등록
+        model.addAttribute("commentsDtos", commentDtos); //댓글 목록 모델에 등록
         // 3. 뷰 페이지 반환하기
         return "articles/show";
     }
