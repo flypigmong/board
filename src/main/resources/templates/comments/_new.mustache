@@ -17,6 +17,7 @@
             {{#article}}
                 <input type="hidden" id="new-comment-article-id" value="{{id}}">
             {{/article}}
+            <!-- 전송 버튼 -->
             <button type="button" class="btn btn-primary" id="comment-create-btn">댓글 작성</button>
         </form>
     </div>
@@ -27,22 +28,22 @@
     const commentCreateBtn = document.querySelector("#comment-create-btn");
     // 댓글 클릭 이벤트 감지
     commentCreateBtn.addEventListener("click", function() {
-       // 새 댓글 객체 생성
-       const comment = {
-          // 새 댓글의 닉네임
-          nickname: document.querySelector("#new-comment-nickname").value,
-          // 새 댓글의 본문
-         body: document.querySelector("#new-comment-body").value,
-         // 부모 게시글의 id
-         articleId: document.querySelector("#new-comment-article-id").value
-         };
+        // 새 댓글 객체 생성
+        const comment = {
+            // 새 댓글의 닉네임
+            nickname: document.querySelector("#new-comment-nickname").value,
+            // 새 댓글의 본문
+            body: document.querySelector("#new-comment-body").value,
+            // 부모 게시글의 id
+            articleId: document.querySelector("#new-comment-article-id").value
+        };
 
-         //댓글 객체 출력
-         console.log(comment);
+        // 댓글 객체 출력
+        console.log(comment);
 
-         //fetch() - 비동기 통신을 위한 API
-         const url = "/api/articles/" + comment.articleId + "/comments";
-         fetch(url, {
+        // fetch() - 비동기 통신을 위한 API
+        const url = "/api/articles/" + comment.articleId + "/comments";
+        fetch(url, {
             method: "post",    // POST 요청
             headers: {         // 전송 본문의 데이터 타입(JSON) 정보
             "Content-Type": "application/json"
@@ -57,5 +58,5 @@
             window.location.reload();
         });
     });
-  }
+}
 </script>
